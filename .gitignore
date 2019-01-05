@@ -1,7 +1,6 @@
 # created by Mehdi / email2mehdihasan@gmail.com
 #built application files
 *.apk
-*.ap_
 
 # files for the dex VM
 *.dex
@@ -27,11 +26,8 @@ Thumbs.db
 .project
 
 # Android Studio
-.iml
+*.iml
 .idea
 .idea/workspace.xml - remove # and delete .idea if it better suit your needs.
 .gradle
 build/
-
-#NDK
-obj/
