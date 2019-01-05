@@ -1,4 +1,4 @@
-package mehdi.me.kotlin_weather_app
+package mehdi.me.kotlinweatherapp
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

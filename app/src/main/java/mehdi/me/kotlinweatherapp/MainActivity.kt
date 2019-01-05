@@ -1,4 +1,4 @@
-package mehdi.me.kotlin_weather_app
+package mehdi.me.kotlinweatherapp
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
