@@ -4,13 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.find
-import org.jetbrains.anko.longToast
-import org.jetbrains.anko.uiThread
+import mehdi.me.kotlinweatherapp.domain.RequestForecastCommand
+import org.jetbrains.anko.*
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
+
+    //var forecastList: RecyclerView? = null
 
     private val items = listOf(
         "Mon 6/23 - Sunny - 31/17",
@@ -28,12 +28,21 @@ class MainActivity : AppCompatActivity() {
 
         val forecastList: RecyclerView = find(R.id.forecast_list)
         forecastList.layoutManager = LinearLayoutManager(this)
-        forecastList.adapter = ForecastListAdapter(items)
+        fetchWeatherDataAndLoad(forecastList)
     }
 
     override fun onResume() {
         super.onResume()
-        fetchWeatherData()
+        //fetchWeatherData()
+    }
+
+    fun fetchWeatherDataAndLoad(forecastList: RecyclerView) {
+        doAsync {
+            val result = RequestForecastCommand("94043").execute()
+            uiThread {
+                forecastList.adapter = ForecastListAdapter(result)
+            }
+        }
     }
 
     fun fetchWeatherData() {
